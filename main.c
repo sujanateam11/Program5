@@ -1,12 +1,12 @@
 #include<stdio.h>
-#include<conio.h>
+//#include<conio.h>
 #include<openacc.h>
-#include<openmp.h>
+//#include<openmp.h>
 float func(float x,float y);
 void main()
 {
  float sx,ex,yp,h,i,yp1,s,s1,s2,s3,s4;
- clrscr();
+ //clrscr();
  printf("Enter the value of Y(1) ::");
  scanf("%f",&yp);
  printf("Enter the value of Start x ::");
@@ -15,7 +15,7 @@ void main()
  scanf("%f",&ex);
  printf("Enter the value of h ::");
  scanf("%f",&h);
- 
+
 #ifdef openacc
 #pragma openacc loop kernels reduce (:*)
 #pragma openacc independent
@@ -32,7 +32,7 @@ for(i=sx;i<=ex+h;i=i+h)
   s = (s1+(2*s2)+(2*s3)+s4)/6;
   yp1 = yp + (h*s);
    if((int)(i*10)==(int)(ex*10))
- 
+
 #ifdef openacc
 #pragma openacc wait
 #elif omp
